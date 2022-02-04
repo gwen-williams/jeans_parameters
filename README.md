@@ -1,5 +1,3 @@
-# jeans_parameters
-
 Calculate the density assuming spherical symmetry, the thermal velocity dispersion, the Jeans length, and the Jeans mass for any given mass, radius and temperature.
 
 ## Dependencies
