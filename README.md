@@ -2,12 +2,16 @@ Calculate the density assuming spherical symmetry, the thermal velocity dispersi
 
 ## Dependencies
 
+Python 3.9
+
 * sys
 * argparse
 * numpy
 * astropy
 
 ## Usage
+
+In iPython:
 
 `run jeans_parameters.py -h` 
 
