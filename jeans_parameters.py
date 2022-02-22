@@ -1,4 +1,3 @@
-import sys
 import argparse
 import numpy as np
 from astropy import constants as const
@@ -54,7 +53,7 @@ def jeans_length(M,R,T):
 
 def jeans_mass(M,R,T):
 	"""
-	Function to calculate the Jeans length
+	Function to calculate the Jeans mass
 
 	Arguments:
 	M (float) : mass of source, in Msun
@@ -62,8 +61,8 @@ def jeans_mass(M,R,T):
 	T (float) : temperature of clump, in K
 
 	Returns:
-	mj_kg (float) : Jeans length, in kg
-	mj_msun (float) : Jeans length, in Msun
+	mj_kg (float) : Jeans mass, in kg
+	mj_msun (float) : Jeans mass, in Msun
 	"""
 	mj_kg = (np.pi**(5./2.) * sigma_therm(T)**3) / (6.*np.sqrt(const.G.value**3 * rho(M,R)))
 	mj_msun = mj_kg/const.M_sun.value
@@ -138,8 +137,7 @@ def do_calcs(M,R,T):
 
 if __name__ == '__main__':
 
-	parser=argparse.ArgumentParser(
-    description='''Script to calculate Jeans parameters for any given Mass, Radius and Temperature of source, assuming spherical symmetry.''')
+	parser=argparse.ArgumentParser(description='''Script to calculate Jeans parameters for any given Mass, Radius and Temperature of source, assuming spherical symmetry.''')
 	parser.add_argument("-m","--mass",action='store',dest='mass',type=float,default=100.,help="Mass of source, in Msun")
 	parser.add_argument("-r","--radius",action='store',dest='radius',type=float,default=0.1,help="Radius of source, in pc")
 	parser.add_argument("-t","--temperature",action='store',dest='temperature',type=float,default=10.,help="Temperature of source, in K")
@@ -151,6 +149,4 @@ if __name__ == '__main__':
 
 	# Get results
 	do_calcs(args.mass,args.radius,args.temperature)
-
-
 
