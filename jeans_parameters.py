@@ -29,7 +29,7 @@ def sigma_therm(T):
 	sig (float) : thermal velocity dispersion, in m s^-1.
 	"""
 	mu = 2.8
-	sig = np.sqrt( (const.k_B.value*T) / (2.8*const.m_p.value) )
+	sig = np.sqrt( (const.k_B.value*T) / (mu*const.m_p.value) )
 	return sig
 
 
