@@ -29,7 +29,6 @@ def volume_density(M,R):
 	Returns:
 	vd (float): volume density, in cm^-3
 	"""
-	mu = 2.8
 	vd = (3.*M*const.M_sun.value)/((mu*const.m_p.value*4.*np.pi)*((R*const.pc.value)**3)*1e6)  #/ 1e6
 	return vd
 
@@ -44,7 +43,6 @@ def sigma_therm(T):
 	Returns:
 	sig (float) : thermal velocity dispersion, in m s^-1.
 	"""
-	mu = 2.8
 	sig = np.sqrt( (const.k_B.value*T) / (mu*const.m_p.value) )
 	return sig
 
@@ -96,7 +94,6 @@ def ncores(M,MJ):
 	Returns:
 	n (float) : number of cores
 	"""	
-	CFE = 0.13 # from Palau et al. 2015
 	n = (CFE*M)/MJ
 	return n
 
@@ -155,8 +152,6 @@ def do_calcs(M,R,T):
 	print(number)
 	print("")
 
-	print(" ---- (assumed mu=2.8 and CFE=13%) ----")
-
 
 
 
@@ -170,6 +165,13 @@ if __name__ == '__main__':
 
 	print("")
 	print("------- Parameters: M={0} Msun, R={1} pc, T={2} K  -------".format(args.mass,args.radius,args.temperature))
+	print("")
+	
+	# Assumed parameters
+	mu = 2.8
+	CFE = 0.13 # from Palau et al. 2015
+
+	print("------- Assumed parameters: mu={0}, CFE={1} % -------".format(mu,CFE*100.))
 	print("")
 
 	# Get results

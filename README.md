@@ -1,5 +1,7 @@
 Calculate the density assuming spherical symmetry, the thermal velocity dispersion, the Jeans length, and the Jeans mass for any given mass, radius and temperature.
 
+Currently, the script assumes $\mu$ = 2.8, and a core formation efficiency (CFE) of 13%. These can be changed on lines 174 and 175.
+
 ## Dependencies
 
 Python 3.9
