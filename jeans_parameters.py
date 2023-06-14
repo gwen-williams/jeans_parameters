@@ -18,6 +18,17 @@ def rho(M,R):
 	return p
 
 
+def volume_density(M,R):
+	"""
+	Function to calculate the volume density of a source assuming spherical symmetry
+
+
+	"""
+	mu = 2.8
+	vd = (3.*M*const.M_sun.value)/((mu*const.m_p.value*4.*np.pi)*((R*const.pc.value)**3)*1e6)  #/ 1e6
+	return vd
+
+
 def sigma_therm(T):
 	"""
 	Function to calculate the thermal broadening in m/s.
@@ -80,7 +91,8 @@ def ncores(M,MJ):
 	Returns:
 	n (float) : number of cores
 	"""	
-	n = M/(2.5*MJ)
+	CFE = 0.13 # from Palau et al. 2015
+	n = (CFE*M)/MJ
 	return n
 
 
@@ -107,9 +119,15 @@ def do_calcs(M,R,T):
 	L_jeans = jeans_length(M,R,T)
 	M_jeans = jeans_mass(M,R,T)
 	number = ncores(M,M_jeans[1])
+	vol_dens = volume_density(M,R)
 
 	print("-------  Density, in kgm^-3 ------- ")
 	print(density)
+	print("")
+
+
+	print("------- Volume density, in cm^-3 ------- ")
+	print(vol_dens)
 	print("")
 
 
@@ -128,9 +146,11 @@ def do_calcs(M,R,T):
 	print("")
 
 
-	print("-------  Predicted number of fragments ------- ")
+	print("-------  Predicted number of fragments (CFE=13%) ------- ")
 	print(number)
 	print("")
+
+	print(" ---- (assumed mu=2.8 and CFE=13%) ----")
 
 
 
