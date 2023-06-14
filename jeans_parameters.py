@@ -22,7 +22,12 @@ def volume_density(M,R):
 	"""
 	Function to calculate the volume density of a source assuming spherical symmetry
 
+	Arguments:
+	M (float): mass of source, in Msun
+	R (float): radius of source, in parsec
 
+	Returns:
+	vd (float): volume density, in cm^-3
 	"""
 	mu = 2.8
 	vd = (3.*M*const.M_sun.value)/((mu*const.m_p.value*4.*np.pi)*((R*const.pc.value)**3)*1e6)  #/ 1e6
